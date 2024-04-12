@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Green Bee Eater", description: "Emerald acrobat of the skies, the Green Bee-eater flashes vibrant green with a dash of blue. A skilled hunter, it snatches insects mid-air, a flash of color against the open sky.", image: "images/bird4.jpg", sound: "sounds/bird4.mp3", position: { x: 60, y: 85 }, icon: "icons/bird4-icon.png", size: 60 },
         { name: "Blue Tailed Bee Eater", description: "A dazzling jewel of Southeast Asia, the Blue-tailed Bee-eater boasts emerald plumage and a vibrant blue tail. This agile hunter swoops and dives, catching insects with lightning speed.", image: "images/bird5.jpg", sound: "sounds/bird5.mp3", position: { x: 90, y: 80 }, icon: "icons/bird5-icon.png", size: 70 },
         { name: "Black winged kite", description: "With sharp eyes and black wing patches, the Black-winged Kite patrols open lands. It hovers like a kestrel, searching for prey, a master of aerial acrobatics.", image: "images/bird6.jpg", sound: "sounds/bird6.mp3", position: { x: 40, y: 30 }, icon: "icons/bird6-icon.png", size: 60 },
-        { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
+        { name: "Jacobin Cuckoo", description: "Sharp dresser of the bird world, the Jacobin Cuckoo sports black and white with a jaunty crest. A master of avian trickery, it lays its eggs in other birds' nests.", image: "images/bird7.jpg", sound: "sounds/bird7.mp3", position: { x: 30, y: 20 }, icon: "icons/bird7-icon.png", size: 80 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
     window.dispatchEvent(new Event("resize"));
 });
 // Function to handle orientation change
-function handleOrientationChange() {
-    if (window.orientation === 90 || window.orientation === -90) {
+function handleOrientationChange(mediaQueryList) {
+    if (mediaQueryList.matches) {
         // If device is in landscape mode, redirect to the index.html page
         window.location.href = "index.html";
     } else {
@@ -103,8 +103,11 @@ function handleOrientationChange() {
     }
 }
 
-// Listen for orientation change
-window.addEventListener("orientationchange", handleOrientationChange);
+// Create a media query for landscape orientation
+const landscapeMediaQuery = window.matchMedia("(orientation: landscape)");
 
 // Check orientation on page load
-window.addEventListener("DOMContentLoaded", handleOrientationChange);
+handleOrientationChange(landscapeMediaQuery);
+
+// Listen for orientation change
+landscapeMediaQuery.addListener(handleOrientationChange);
