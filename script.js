@@ -92,3 +92,25 @@ document.addEventListener("DOMContentLoaded", function() {
     // Trigger resize event on page load to initially set bird positions
     window.dispatchEvent(new Event("resize"));
 });
+// Check if the device is in landscape mode
+function isLandscape() {
+    return window.matchMedia("(orientation: landscape)").matches;
+}
+
+// Function to handle orientation change
+function handleOrientationChange() {
+    if (!isLandscape()) {
+        // If device is not in landscape mode, redirect to a landscape-only page
+        window.location.href = "landscape-only.html";
+    }
+}
+
+// Listen for orientation change
+window.addEventListener("orientationchange", handleOrientationChange);
+
+// Check orientation on page load
+window.addEventListener("DOMContentLoaded", function() {
+    if (!isLandscape()) {
+        window.location.href = "landscape-only.html";
+    }
+});
