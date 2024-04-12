@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Trigger resize event on page load to initially set bird positions
     window.dispatchEvent(new Event("resize"));
 });
-// Check if the device is in landscape mode
+/// Function to check if the device is in landscape mode
 function isLandscape() {
-    return window.matchMedia("(orientation: landscape)").matches;
+    return window.innerWidth > window.innerHeight;
 }
 
 // Function to handle orientation change
@@ -109,8 +109,4 @@ function handleOrientationChange() {
 window.addEventListener("orientationchange", handleOrientationChange);
 
 // Check orientation on page load
-window.addEventListener("DOMContentLoaded", function() {
-    if (!isLandscape()) {
-        window.location.href = "landscape-only.html";
-    }
-});
+window.addEventListener("DOMContentLoaded", handleOrientationChange);
