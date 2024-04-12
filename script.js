@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Common Kingfisher", description: "A tiny jewel by the water, the Common Kingfisher stuns with electric blue plumage and a long, sharp bill. This feisty fish-catcher dives for prey with lightning speed.", image: "images/bird2.jpg", sound: "sounds/bird2.mp3", position: { x: 50, y: 70 }, icon: "icons/bird2-icon.png", size: 50 },
         { name: "Eurasian skylark", description: "Soaring singer of open fields, the Eurasian Skylark fills the air with melodious trills. Though brown-streaked for camouflage, its vibrant song betrays its presence.", image: "images/bird3.jpg", sound: "sounds/bird3.mp3", position: { x: 8, y: 65 }, icon: "icons/bird3-icon.png", size: 50 },
         { name: "Green Bee Eater", description: "Emerald acrobat of the skies, the Green Bee-eater flashes vibrant green with a dash of blue. A skilled hunter, it snatches insects mid-air, a flash of color against the open sky.", image: "images/bird4.jpg", sound: "sounds/bird4.mp3", position: { x: 60, y: 85 }, icon: "icons/bird4-icon.png", size: 60 },
-        { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
-        { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
+        { name: "Blue Tailed Bee Eater", description: "A dazzling jewel of Southeast Asia, the Blue-tailed Bee-eater boasts emerald plumage and a vibrant blue tail. This agile hunter swoops and dives, catching insects with lightning speed.", image: "images/bird5.jpg", sound: "sounds/bird5.mp3", position: { x: 90, y: 80 }, icon: "icons/bird5-icon.png", size: 70 },
+        { name: "Black winged kite", description: "With sharp eyes and black wing patches, the Black-winged Kite patrols open lands. It hovers like a kestrel, searching for prey, a master of aerial acrobatics.", image: "images/bird6.jpg", sound: "sounds/bird6.mp3", position: { x: 40, y: 30 }, icon: "icons/bird6-icon.png", size: 60 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
         { name: "Bird 1", description: "Description of Bird 1", image: "images/bird1.jpg", sound: "sounds/bird1.mp3", position: { x: 30, y: 70 }, icon: "icons/bird1-icon.png", size: 50 },
@@ -92,15 +92,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Trigger resize event on page load to initially set bird positions
     window.dispatchEvent(new Event("resize"));
 });
-/// Function to check if the device is in landscape mode
-function isLandscape() {
-    return window.innerWidth > window.innerHeight;
-}
-
 // Function to handle orientation change
 function handleOrientationChange() {
-    if (!isLandscape()) {
-        // If device is not in landscape mode, redirect to a landscape-only page
+    if (window.orientation === 90 || window.orientation === -90) {
+        // If device is in landscape mode, redirect to the index.html page
+        window.location.href = "index.html";
+    } else {
+        // If device is in portrait mode, redirect to the landscape-only.html page
         window.location.href = "landscape-only.html";
     }
 }
